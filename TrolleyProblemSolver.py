@@ -1,4 +1,4 @@
-import sklearn 
+import sklearn
 import csvTranslator
 import numpy as np
 
@@ -23,23 +23,17 @@ while keep_going == "y":
                      input("Person 1 important\n"), input("Person 1 species\n"), input("Person 1 count\n"), input("Person 1 evil\n"), input("Person 2 gender\n"), 
                      input("Person 2 age\n"), input("Person 2 criminal\n"), input("Person 2 family\n"), input("Person 2 rich\n"), input("Person 2 important\n"), 
                      input("Person 2 species\n"), input("Person 2 count\n"), input("Person 2 evil\n")]])
-    
-    j = 0
-    for i in sides[0]:
-        if i == '':
-            sides[0][j] = 0
-        else: 
-            sides[0][j] = int(sides[0][j]) 
-        j += 1
-    
+
+    for j, i in enumerate(sides[0]):
+        sides[0][j] = 0 if i == '' else int(sides[0][j])
     print(sides)
-    
+
     prediction = forest.predict(sides)
-    
+
     if prediction == 1:
         print("Side 1 died")
     else:
         print("Side 2 died")
-        
+
     keep_going = input('Enter "y" to try again\n')
         
